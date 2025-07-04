@@ -73,17 +73,19 @@ const Hero = () => {
       </button>
       
       <div className="relative z-10 text-center text-white px-4">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-          Къща за гости Саня
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-text-reveal">
+          <span className="inline-block animate-text-glow">
+            Къща за гости Саня
+          </span>
         </h1>
-        <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto opacity-90">
+        <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto opacity-90 animate-fade-in" style={{animationDelay: '0.5s', animationFillMode: 'both'}}>
           Уютно място за почивка сред красивата българска природа
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{animationDelay: '1s', animationFillMode: 'both'}}>
           <Button 
             size="lg"
             onClick={() => scrollToSection('rooms')}
-            className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-glow"
+            className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-glow transform hover:scale-105 transition-all duration-300"
           >
             Разгледай стаите
           </Button>
@@ -91,7 +93,7 @@ const Hero = () => {
             size="lg"
             variant="outline"
             onClick={() => scrollToSection('contacts')}
-            className="border-white text-white hover:bg-white hover:text-primary"
+            className="border-white text-white hover:bg-white hover:text-primary transform hover:scale-105 transition-all duration-300"
           >
             Свържи се с нас
           </Button>

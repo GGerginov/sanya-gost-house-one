@@ -4,6 +4,7 @@ import Rooms from '../components/Rooms';
 import Amenities from '../components/Amenities';
 import Location from '../components/Location';
 import Contacts from '../components/Contacts';
+import Footer from '../components/Footer';
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <Amenities />
       <Location />
       <Contacts />
+      <Footer />
     </div>
   );
 };
