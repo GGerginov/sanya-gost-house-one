@@ -118,8 +118,29 @@ All colors MUST be HSL.
     animation: fadeIn 1s ease-in-out;
   }
   
+  .hero-slide {
+    transition: opacity 1s ease-in-out;
+  }
+  
   @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  @keyframes slideImageFade {
+    0% { 
+      opacity: 0; 
+      transform: scale(1.05); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: scale(1); 
+    }
   }
 }
