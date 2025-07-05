@@ -25,12 +25,22 @@ const Gallery = () => {
   };
 
   const goToPrevious = () => {
-    setModalSlide((prev) => 
+    setActiveImage((prev) => 
       prev === 0 ? galleryImages.length - 1 : prev - 1
     );
   };
 
   const goToNext = () => {
+    setActiveImage((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const goToPreviousModal = () => {
+    setModalSlide((prev) => 
+      prev === 0 ? galleryImages.length - 1 : prev - 1
+    );
+  };
+
+  const goToNextModal = () => {
     setModalSlide((prev) => (prev + 1) % galleryImages.length);
   };
 
@@ -46,44 +56,99 @@ const Gallery = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {galleryImages.map((image, index) => (
-            <div 
-              key={index}
-              className="gallery-item group cursor-pointer"
-              onClick={() => {
-                setActiveImage(index);
-                openModal(index);
-              }}
-              onMouseEnter={() => setActiveImage(index)}
-            >
-              <div className={`relative overflow-hidden rounded-lg transition-all duration-300 transform hover:scale-105 ${
-                activeImage === index ? 'shadow-glow' : 'shadow-warm blur-sm hover:blur-none'
-              }`}>
-                <img 
-                  src={image.src} 
-                  alt={image.alt}
-                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
+        {/* Perspective Carousel */}
+        <div className="relative max-w-6xl mx-auto">
+          <div className="flex items-center justify-center space-x-4 overflow-hidden">
+            {galleryImages.map((image, index) => {
+              const isActive = index === activeImage;
+              const offset = index - activeImage;
+              const absOffset = Math.abs(offset);
               
-              {/* Mirror effect */}
-              <div className={`mt-2 overflow-hidden rounded-lg transition-all duration-300 ${
-                activeImage === index ? 'opacity-50' : 'opacity-30 blur-sm'
-              }`}>
-                <img 
-                  src={image.src} 
-                  alt={`${image.alt} reflection`}
-                  className="w-full h-32 object-cover object-top transform scale-y-[-1] transition-transform duration-300 group-hover:scale-110 group-hover:scale-y-[-1.1]"
+              return (
+                <div
+                  key={index}
+                  className={`cursor-pointer transition-all duration-500 ease-out ${
+                    absOffset > 2 ? 'hidden' : 'block'
+                  }`}
                   style={{
-                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%)'
+                    transform: `
+                      translateX(${offset * 20}px) 
+                      scale(${isActive ? 1 : 0.8 - absOffset * 0.1}) 
+                      translateZ(${isActive ? '0px' : '-100px'})
+                    `,
+                    zIndex: isActive ? 10 : 10 - absOffset,
                   }}
-                />
-              </div>
-            </div>
-          ))}
+                  onClick={() => {
+                    setActiveImage(index);
+                    openModal(index);
+                  }}
+                >
+                  <div className="gallery-item group">
+                    <div className={`relative overflow-hidden rounded-lg transition-all duration-500 ${
+                      isActive 
+                        ? 'shadow-glow w-80 h-64' 
+                        : 'shadow-warm blur-sm hover:blur-none w-64 h-48'
+                    }`}>
+                      <img 
+                        src={image.src} 
+                        alt={image.alt}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    
+                    {/* Mirror effect */}
+                    <div className={`mt-2 overflow-hidden rounded-lg transition-all duration-500 ${
+                      isActive ? 'opacity-50 w-80 h-20' : 'opacity-30 blur-sm w-64 h-16'
+                    }`}>
+                      <img 
+                        src={image.src} 
+                        alt={`${image.alt} reflection`}
+                        className="w-full h-full object-cover object-top transform scale-y-[-1] transition-transform duration-300 group-hover:scale-110 group-hover:scale-y-[-1.1]"
+                        style={{
+                          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%)',
+                          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%)'
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          
+          {/* Navigation arrows */}
+          <button
+            onClick={goToPrevious}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
+            aria-label="Предишна снимка"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={goToNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
+            aria-label="Следваща снимка"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+          
+          {/* Slide indicators */}
+          <div className="flex justify-center space-x-2 mt-8">
+            {galleryImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveImage(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === activeImage 
+                    ? 'bg-primary scale-125' 
+                    : 'bg-muted-foreground hover:bg-primary/70'
+                }`}
+                aria-label={`Отиди на снимка ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Modal with Slider */}
@@ -121,7 +186,7 @@ const Gallery = () => {
 
               {/* Modal Navigation Arrows */}
               <button
-                onClick={goToPrevious}
+                onClick={goToPreviousModal}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
                 aria-label="Предишна снимка"
               >
@@ -129,7 +194,7 @@ const Gallery = () => {
               </button>
 
               <button
-                onClick={goToNext}
+                onClick={goToNextModal}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
                 aria-label="Следваща снимка"
               >
