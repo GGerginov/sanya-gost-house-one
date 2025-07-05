@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
   
   const galleryImages = [
     { src: '/lovable-uploads/2d101dfc-e1cb-4d20-a883-97d173c5a333.png', alt: 'Къща за гости' },
@@ -11,6 +13,28 @@ const Gallery = () => {
     { src: '/lovable-uploads/2d101dfc-e1cb-4d20-a883-97d173c5a333.png', alt: 'Изглед' },
     { src: '/lovable-uploads/2d101dfc-e1cb-4d20-a883-97d173c5a333.png', alt: 'Терасата' }
   ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [galleryImages.length]);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const goToPrevious = () => {
+    setCurrentSlide((prev) => 
+      prev === 0 ? galleryImages.length - 1 : prev - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
+  };
 
   return (
     <section id="gallery" className="py-20 bg-gradient-hero">
@@ -24,36 +48,78 @@ const Gallery = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {galleryImages.map((image, index) => (
+        <div className="relative max-w-4xl mx-auto">
+          {/* Main slider */}
+          <div className="relative overflow-hidden rounded-lg shadow-glow">
             <div 
-              key={index}
-              className="gallery-item group cursor-pointer"
-              onClick={() => setSelectedImage(selectedImage === index ? null : index)}
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              <div className="relative overflow-hidden rounded-lg shadow-warm hover:shadow-glow transition-all duration-300 transform hover:scale-105">
-                <img 
-                  src={image.src} 
-                  alt={image.alt}
-                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-              
-              {/* Mirror effect */}
-              <div className="mt-2 overflow-hidden rounded-lg opacity-30">
-                <img 
-                  src={image.src} 
-                  alt={`${image.alt} reflection`}
-                  className="w-full h-32 object-cover object-top transform scale-y-[-1] transition-transform duration-300 group-hover:scale-110 group-hover:scale-y-[-1.1]"
-                  style={{
-                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 100%)'
-                  }}
-                />
-              </div>
+              {galleryImages.map((image, index) => (
+                <div key={index} className="w-full flex-shrink-0">
+                  <div className="gallery-item group cursor-pointer">
+                    <div 
+                      className="relative overflow-hidden"
+                      onClick={() => setSelectedImage(index)}
+                    >
+                      <img 
+                        src={image.src} 
+                        alt={image.alt}
+                        className="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    
+                    {/* Mirror effect */}
+                    <div className="mt-2 overflow-hidden opacity-40">
+                      <img 
+                        src={image.src} 
+                        alt={`${image.alt} reflection`}
+                        className="w-full h-24 object-cover object-top transform scale-y-[-1] transition-transform duration-300 group-hover:scale-105 group-hover:scale-y-[-1.05]"
+                        style={{
+                          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%)',
+                          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%)'
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={goToPrevious}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
+            aria-label="Предишна снимка"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={goToNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
+            aria-label="Следваща снимка"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          {/* Slide Indicators */}
+          <div className="flex justify-center space-x-2 mt-8">
+            {galleryImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide 
+                    ? 'bg-primary scale-125' 
+                    : 'bg-muted-foreground hover:bg-primary/70'
+                }`}
+                aria-label={`Отиди на снимка ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         {selectedImage !== null && (
