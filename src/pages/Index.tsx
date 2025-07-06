@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import Rooms from '../components/Rooms';
 import Amenities from '../components/Amenities';
 import Gallery from '../components/Gallery';
+import PhotoGallery from '../components/PhotoGallery';
 import Location from '../components/Location';
 import Contacts from '../components/Contacts';
 import Footer from '../components/Footer';
@@ -27,6 +28,7 @@ const Index = () => {
       <Rooms />
       <Amenities />
       <Gallery />
+      <PhotoGallery />
       <Location />
       <Contacts />
       <Footer />
