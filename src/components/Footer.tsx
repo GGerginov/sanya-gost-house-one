@@ -1,4 +1,6 @@
 import { Phone, Mail, MapPin, Facebook, Instagram, MessageSquare } from 'lucide-react';
+import PrivacyPolicy from './PrivacyPolicy';
+import TermsOfUse from './TermsOfUse';
 
 const Footer = () => {
   const scrollToSection = (sectionId: string) => {
@@ -133,12 +135,16 @@ const Footer = () => {
             © 2024 Къща за гости Саня. Всички права запазени.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
-              Политика за поверителност
-            </a>
-            <a href="#" className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
-              Условия за ползване
-            </a>
+            <PrivacyPolicy>
+              <button className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
+                Политика за поверителност
+              </button>
+            </PrivacyPolicy>
+            <TermsOfUse>
+              <button className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
+                Условия за ползване
+              </button>
+            </TermsOfUse>
           </div>
         </div>
       </div>
