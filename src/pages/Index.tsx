@@ -5,6 +5,7 @@ import Rooms from '../components/Rooms';
 import Amenities from '../components/Amenities';
 import Gallery from '../components/Gallery';
 import PhotoGallery from '../components/PhotoGallery';
+import Tour360 from '../components/Tour360';
 import Location from '../components/Location';
 import Contacts from '../components/Contacts';
 import Footer from '../components/Footer';
@@ -29,6 +30,7 @@ const Index = () => {
       <Amenities />
       <Gallery />
       <PhotoGallery />
+      <Tour360 />
       <Location />
       <Contacts />
       <Footer />
