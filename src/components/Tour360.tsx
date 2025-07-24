@@ -37,34 +37,45 @@ const Tour360 = () => {
     {
       title: "Всекидневна",
       description: "Уютна всекидневна с камина",
-      thumbnail: "/placeholder.svg"
+      thumbnail: "/placeholder.svg",
+      videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
     },
     {
       title: "Спалня 1",
       description: "Главна спалня с двойно легло",
-      thumbnail: "/placeholder.svg"
+      thumbnail: "/placeholder.svg",
+      videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
     },
     {
       title: "Спалня 2", 
       description: "Втора спалня с единични легла",
-      thumbnail: "/placeholder.svg"
+      thumbnail: "/placeholder.svg",
+      videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
     },
     {
       title: "Кухня",
       description: "Напълно оборудвана кухня",
-      thumbnail: "/placeholder.svg"
+      thumbnail: "/placeholder.svg",
+      videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
     },
     {
       title: "Баня",
       description: "Модерна баня с душ",
-      thumbnail: "/placeholder.svg"
+      thumbnail: "/placeholder.svg",
+      videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
     },
     {
       title: "Тераса",
       description: "Тераса с изглед към планината",
-      thumbnail: "/placeholder.svg"
+      thumbnail: "/placeholder.svg",
+      videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
     }
   ];
+
+  const handleRoomChange = (roomIndex: number) => {
+    setActiveRoom(roomIndex);
+    setIsVideoPlaying(false); // Reset video state when changing rooms
+  };
 
   return (
     <section id="tour360" className="py-20 bg-background">
@@ -113,8 +124,9 @@ const Tour360 = () => {
                         className="w-full h-full object-cover"
                         controls
                         onEnded={() => setIsVideoPlaying(false)}
+                        key={activeRoom} // Force re-render when room changes
                       >
-                        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                        <source src={rooms[activeRoom].videoUrl} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
                       <div className="absolute top-4 right-4 z-10">
@@ -144,7 +156,7 @@ const Tour360 = () => {
                 className={`cursor-pointer transition-all hover:shadow-md ${
                   activeRoom === index ? 'ring-2 ring-primary' : ''
                 }`}
-                onClick={() => setActiveRoom(index)}
+                onClick={() => handleRoomChange(index)}
               >
                 <CardContent className="p-4">
                   <div className="flex gap-3">
