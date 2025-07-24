@@ -1,10 +1,37 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Play, Maximize2 } from 'lucide-react';
+import { Play, Maximize2, Minimize2 } from 'lucide-react';
 
 const Tour360 = () => {
   const [activeRoom, setActiveRoom] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const toggleFullscreen = async () => {
+    if (!containerRef.current) return;
+
+    try {
+      if (!document.fullscreenElement) {
+        await containerRef.current.requestFullscreen();
+        setIsFullscreen(true);
+      } else {
+        await document.exitFullscreen();
+        setIsFullscreen(false);
+      }
+    } catch (error) {
+      console.error('Error toggling fullscreen:', error);
+    }
+  };
+
+  const handlePlay = () => {
+    setIsVideoPlaying(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
 
   const rooms = [
     {
@@ -56,19 +83,53 @@ const Tour360 = () => {
           <div className="lg:col-span-2">
             <Card className="overflow-hidden">
               <CardContent className="p-0">
-                <div className="relative aspect-video bg-muted flex items-center justify-center">
-                  {/* Placeholder for 360 viewer */}
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Play className="w-8 h-8 text-primary" />
+                <div 
+                  ref={containerRef}
+                  className="relative aspect-video bg-muted flex items-center justify-center"
+                >
+                  {!isVideoPlaying ? (
+                    /* Placeholder for 360 viewer */
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Play className="w-8 h-8 text-primary" />
+                      </div>
+                      <h3 className="text-xl font-semibold mb-2">{rooms[activeRoom].title}</h3>
+                      <p className="text-muted-foreground mb-4">{rooms[activeRoom].description}</p>
+                      <div className="flex gap-2 justify-center">
+                        <Button onClick={handlePlay} className="gap-2">
+                          <Play className="w-4 h-4" />
+                          Пусни обиколката
+                        </Button>
+                        <Button variant="outline" className="gap-2" onClick={toggleFullscreen}>
+                          {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+                          {isFullscreen ? 'Излез от пълен екран' : 'Пълен екран'}
+                        </Button>
+                      </div>
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">{rooms[activeRoom].title}</h3>
-                    <p className="text-muted-foreground mb-4">{rooms[activeRoom].description}</p>
-                    <Button variant="outline" className="gap-2">
-                      <Maximize2 className="w-4 h-4" />
-                      Пълен екран
-                    </Button>
-                  </div>
+                  ) : (
+                    <div className="relative w-full h-full">
+                      <video
+                        ref={videoRef}
+                        className="w-full h-full object-cover"
+                        controls
+                        onEnded={() => setIsVideoPlaying(false)}
+                      >
+                        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                      <div className="absolute top-4 right-4 z-10">
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          className="gap-2 bg-black/50 text-white border-white/20 hover:bg-black/70" 
+                          onClick={toggleFullscreen}
+                        >
+                          {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+                          {isFullscreen ? 'Излез' : 'Пълен екран'}
+                        </Button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
