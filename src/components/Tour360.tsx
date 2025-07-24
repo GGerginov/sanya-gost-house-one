@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Play, Maximize2, Minimize2 } from 'lucide-react';
+import { Play, Maximize2, Minimize2, Sofa, Bed, ChefHat, Bath, TreePine, Home } from 'lucide-react';
 
 const Tour360 = () => {
   const [activeRoom, setActiveRoom] = useState(0);
@@ -37,37 +37,37 @@ const Tour360 = () => {
     {
       title: "Всекидневна",
       description: "Уютна всекидневна с камина",
-      thumbnail: "/placeholder.svg",
+      icon: Sofa,
       videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
     },
     {
       title: "Спалня 1",
       description: "Главна спалня с двойно легло",
-      thumbnail: "/placeholder.svg",
+      icon: Bed,
       videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
     },
     {
       title: "Спалня 2", 
       description: "Втора спалня с единични легла",
-      thumbnail: "/placeholder.svg",
+      icon: Home,
       videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
     },
     {
       title: "Кухня",
       description: "Напълно оборудвана кухня",
-      thumbnail: "/placeholder.svg",
+      icon: ChefHat,
       videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
     },
     {
       title: "Баня",
       description: "Модерна баня с душ",
-      thumbnail: "/placeholder.svg",
+      icon: Bath,
       videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
     },
     {
       title: "Тераса",
       description: "Тераса с изглед към планината",
-      thumbnail: "/placeholder.svg",
+      icon: TreePine,
       videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
     }
   ];
@@ -123,6 +123,7 @@ const Tour360 = () => {
                         ref={videoRef}
                         className="w-full h-full object-cover"
                         controls
+                        preload="metadata"
                         onEnded={() => setIsVideoPlaying(false)}
                         key={activeRoom} // Force re-render when room changes
                       >
@@ -160,7 +161,9 @@ const Tour360 = () => {
               >
                 <CardContent className="p-4">
                   <div className="flex gap-3">
-                    <div className="w-16 h-16 bg-muted rounded-lg flex-shrink-0"></div>
+                    <div className="w-16 h-16 bg-primary/10 rounded-lg flex-shrink-0 flex items-center justify-center">
+                      <room.icon className="w-6 h-6 text-primary" />
+                    </div>
                     <div>
                       <h4 className="font-medium text-sm">{room.title}</h4>
                       <p className="text-xs text-muted-foreground mt-1">
