@@ -71,23 +71,24 @@ const Contacts = () => {
                   по телефона или изпратете email. Ще се радваме да ви посрещнем!
                 </p>
                 
-                <div className="space-y-3">
-                  <Button 
-                    className="w-full bg-primary hover:bg-primary-glow"
-                    size="lg"
-                  >
-                    <Phone className="w-4 h-4 mr-2" />
-                    Обади се сега
-                  </Button>
-                  
-                  <Button 
-                    variant="outline" 
-                    className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                    size="lg"
-                  >
-                    <Mail className="w-4 h-4 mr-2" />
-                    Изпрати email
-                  </Button>
+                <div className="space-y-4">
+                  <div className="bg-primary/10 p-4 rounded-lg">
+                    <h4 className="font-semibold text-foreground mb-2">Цени за нощувка</h4>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">1-2 души:</span>
+                        <span className="font-semibold text-primary">80 лв/нощ</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">3-4 души:</span>
+                        <span className="font-semibold text-primary">120 лв/нощ</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">5-6 души:</span>
+                        <span className="font-semibold text-primary">150 лв/нощ</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 
                 <div className="mt-6 p-4 bg-accent/20 rounded-lg">
