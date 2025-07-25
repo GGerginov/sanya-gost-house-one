@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import room1 from '../assets/room-1.jpg';
 import room2 from '../assets/room-2.jpg';
+import LazyImage from './LazyImage';
 
 const Rooms = () => {
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
@@ -70,7 +71,7 @@ const Rooms = () => {
               onClick={() => openRoomModal(roomIndex)}
             >
               <div className="aspect-video overflow-hidden">
-                <img 
+                <LazyImage 
                   src={room.images[0]} 
                   alt={room.name}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -129,7 +130,7 @@ const Rooms = () => {
                   >
                     {rooms[selectedRoom].images.map((image, index) => (
                       <div key={index} className="w-full flex-shrink-0">
-                        <img 
+                        <LazyImage 
                           src={image}
                           alt={`${rooms[selectedRoom].name} - снимка ${index + 1}`}
                           className="w-full h-[60vh] object-cover"

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import LazyImage from './LazyImage';
 
 const PhotoGallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -113,7 +114,7 @@ const PhotoGallery = () => {
                         onClick={() => openModal(slideIndex * photosPerSlide + photoIndex)}
                       >
                         <div className="relative overflow-hidden rounded-lg shadow-warm hover:shadow-glow transition-all duration-300">
-                          <img
+                          <LazyImage
                             src={photo.src}
                             alt={photo.alt}
                             className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
@@ -181,7 +182,7 @@ const PhotoGallery = () => {
 
               {/* Image */}
               <div className="relative">
-                <img 
+                <LazyImage 
                   src={photos[selectedImage].src}
                   alt={photos[selectedImage].alt}
                   className="w-full h-[70vh] object-contain rounded-lg"

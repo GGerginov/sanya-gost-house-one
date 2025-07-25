@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import LazyImage from './LazyImage';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -89,7 +90,7 @@ const Gallery = () => {
                         ? 'shadow-glow w-80 h-64' 
                         : 'shadow-warm blur-sm hover:blur-none w-64 h-48'
                     }`}>
-                      <img 
+                      <LazyImage 
                         src={image.src} 
                         alt={image.alt}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
@@ -101,14 +102,10 @@ const Gallery = () => {
                     <div className={`mt-2 overflow-hidden rounded-lg transition-all duration-500 ${
                       isActive ? 'opacity-50 w-80 h-20' : 'opacity-30 blur-sm w-64 h-16'
                     }`}>
-                      <img 
+                      <LazyImage 
                         src={image.src} 
                         alt={`${image.alt} reflection`}
                         className="w-full h-full object-cover object-top transform scale-y-[-1] transition-transform duration-300 group-hover:scale-110 group-hover:scale-y-[-1.1]"
-                        style={{
-                          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%)',
-                          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%)'
-                        }}
                       />
                     </div>
                   </div>
@@ -174,7 +171,7 @@ const Gallery = () => {
                 >
                   {galleryImages.map((image, index) => (
                     <div key={index} className="w-full flex-shrink-0">
-                      <img 
+                      <LazyImage 
                         src={image.src}
                         alt={image.alt}
                         className="w-full h-[70vh] object-contain"
