@@ -1,37 +1,37 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Wifi, Car, Coffee, TreePine, Utensils, Bath } from 'lucide-react';
+import { Wifi, Car, Coffee, TreePine, Utensils, Waves } from 'lucide-react';
 
 const Amenities = () => {
   const amenities = [
     {
-      icon: <Wifi className="w-8 h-8" />,
-      title: "Безплатен WiFi",
-      description: "Високоскоростен интернет достъп в цялата къща"
-    },
-    {
-      icon: <Car className="w-8 h-8" />,
-      title: "Паркинг",
-      description: "Безплатно паркомясто за всички гости"
+      icon: <Utensils className="w-8 h-8" />,
+      title: "Барбекю",
+      description: "Просторна зала с удобни маси - капацитет 24-30 души, камина, озвучаване"
     },
     {
       icon: <Coffee className="w-8 h-8" />,
       title: "Кухня",
-      description: "Напълно оборудвана кухня за готвене"
+      description: "Напълно оборудвана кухня – фурна, микровълнова, хладилник, съдомиялна, кафемашина на капсули, посуда, барбекюта за приготвяне на храна (на газ и на дърва)"
     },
     {
       icon: <TreePine className="w-8 h-8" />,
       title: "Градина",
-      description: "Красива градина с място за релакс"
+      description: "Голяма и красива градина с кътчета за отдих, детска площадка, батут"
     },
     {
-      icon: <Utensils className="w-8 h-8" />,
-      title: "Барбекю",
-      description: "Място за барбекю и хранене навън"
+      icon: <Waves className="w-8 h-8" />,
+      title: "Джакузи",
+      description: "Луксозно външно джакузи, шезлонги и масички"
     },
     {
-      icon: <Bath className="w-8 h-8" />,
-      title: "Баня",
-      description: "Модерни бани с топла вода"
+      icon: <Car className="w-8 h-8" />,
+      title: "Паркинг",
+      description: "Осигурени паркоместа за гостите в двора на обекта"
+    },
+    {
+      icon: <Wifi className="w-8 h-8" />,
+      title: "WiFi",
+      description: "Високоскоростен интернет на територията на целия обект"
     }
   ];
 
