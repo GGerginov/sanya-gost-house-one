@@ -75,7 +75,7 @@ const Rooms = () => {
   return (
     <section id="rooms" className="py-20 bg-gradient-hero">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 gap-9">
+        <div className="grid gap-9 xs:grid-cols-1 md:grid-cols-2">
           <div className="col-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-foreground mb-4">
