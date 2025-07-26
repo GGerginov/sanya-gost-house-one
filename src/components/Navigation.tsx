@@ -20,11 +20,11 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md shadow-warm transition-all duration-300">
-      <div className="container mx-auto px-4">
+    <nav className="md:fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md shadow-warm transition-all duration-300 min-h-32 items-center flex ">
+      <div className="container mx-auto px-4  max-sm:flex max-sm:justify-center">
         <div className="flex items-center justify-between h-16">
-          <div className="text-xl font-bold text-primary">
-            Къща за гости Саня
+          <div className="flex items-center space-x-2 align-middle">
+            <img src="/src/assets/logo1.svg" alt="Къща за гости Саня" className="w-80" />
           </div>
           
           <div className="hidden md:flex space-x-8">

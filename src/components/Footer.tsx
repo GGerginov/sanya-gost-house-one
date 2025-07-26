@@ -2,6 +2,7 @@ import { Phone, Mail, MapPin, Facebook, Instagram, MessageSquare } from 'lucide-
 import PrivacyPolicy from './PrivacyPolicy';
 import TermsOfUse from './TermsOfUse';
 
+
 const Footer = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -23,26 +24,26 @@ const Footer = () => {
             </p>
             <div className="flex space-x-3">
               <a 
-                href="#" 
+                href="https://www.facebook.com/profile.php?id=61578380037859"
                 className="p-2 bg-primary-foreground/10 rounded-full hover:bg-primary-foreground/20 transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-4 h-4" />
               </a>
-              <a 
-                href="#" 
-                className="p-2 bg-primary-foreground/10 rounded-full hover:bg-primary-foreground/20 transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a 
-                href="#" 
-                className="p-2 bg-primary-foreground/10 rounded-full hover:bg-primary-foreground/20 transition-colors"
-                aria-label="Viber"
-              >
-                <MessageSquare className="w-4 h-4" />
-              </a>
+              {/*<a */}
+              {/*  href="#" */}
+              {/*  className="p-2 bg-primary-foreground/10 rounded-full hover:bg-primary-foreground/20 transition-colors"*/}
+              {/*  aria-label="Instagram"*/}
+              {/*>*/}
+              {/*  <Instagram className="w-4 h-4" />*/}
+              {/*</a>*/}
+              {/*<a */}
+              {/*  href="#" */}
+              {/*  className="p-2 bg-primary-foreground/10 rounded-full hover:bg-primary-foreground/20 transition-colors"*/}
+              {/*  aria-label="Viber"*/}
+              {/*>*/}
+              {/*  <MessageSquare className="w-4 h-4" />*/}
+              {/*</a>*/}
             </div>
           </div>
 
@@ -99,32 +100,33 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span className="text-primary-foreground/80">+359 888 123 456</span>
+                <span className="text-primary-foreground/80">+359 884 20 80 38</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Phone className="w-4 h-4" />
+                <span className="text-primary-foreground/80">+359 884 88 51 14</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
-                <span className="text-primary-foreground/80">info@kasha-sanya.bg</span>
+                <span className="text-primary-foreground/80">guesthousesanya@gmail.com</span>
               </div>
               <div className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 mt-1" />
                 <span className="text-primary-foreground/80">
-                  с. Примерно село<br />
-                  общ. Примерна община
+                  с. Доспей, ул. 11-та № 1
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Quick Info */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Полезна информация</h4>
             <ul className="space-y-2 text-primary-foreground/80">
-              <li>• Check-in: 14:00</li>
-              <li>• Check-out: 12:00</li>
+              <li>• Check-in: 15:00</li>
+              <li>• Check-out: 11:00</li>
               <li>• Безплатен WiFi</li>
               <li>• Безплатен паркинг</li>
-              <li>• Домашни любимци: по договаряне</li>
-              <li>• Работим: 9:00 - 21:00</li>
+
             </ul>
           </div>
         </div>

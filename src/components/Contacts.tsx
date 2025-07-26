@@ -29,7 +29,8 @@ const Contacts = () => {
                   <Phone className="w-5 h-5 text-primary mt-1" />
                   <div>
                     <h4 className="font-semibold text-foreground">Телефон</h4>
-                    <p className="text-muted-foreground">+359 888 123 456</p>
+                    <p className="text-muted-foreground">+359 884 20 80 38</p>
+                    <p className="text-muted-foreground">+359 884 88 51 14</p>
                   </div>
                 </div>
                 
@@ -37,27 +38,20 @@ const Contacts = () => {
                   <Mail className="w-5 h-5 text-primary mt-1" />
                   <div>
                     <h4 className="font-semibold text-foreground">Email</h4>
-                    <p className="text-muted-foreground">info@kasha-sanya.bg</p>
+                    <p className="text-muted-foreground">guesthousesanya@gmail.com</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <MessageSquare className="w-5 h-5 text-primary mt-1" />
                   <div>
-                    <h4 className="font-semibold text-foreground">Viber/WhatsApp</h4>
-                    <p className="text-muted-foreground">+359 888 123 456</p>
+                    <h4 className="font-semibold text-foreground">Viber</h4>
+                    <p className="text-muted-foreground">+359 884 20 80 38</p>
+                    <p className="text-muted-foreground">+359 884 88 51 14</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-3">
-                  <Clock className="w-5 h-5 text-primary mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-foreground">Работно време</h4>
-                    <p className="text-muted-foreground">
-                      Всеки ден: 9:00 - 21:00
-                    </p>
-                  </div>
-                </div>
+
               </CardContent>
             </Card>
 
@@ -70,35 +64,19 @@ const Contacts = () => {
                   За резервация или допълнителна информация, моля свържете се с нас 
                   по телефона или изпратете email. Ще се радваме да ви посрещнем!
                 </p>
-                
-                <div className="space-y-4">
-                  <div className="bg-primary/10 p-4 rounded-lg">
-                    <h4 className="font-semibold text-foreground mb-2">Цени за нощувка</h4>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">1-2 души:</span>
-                        <span className="font-semibold text-primary">80 лв/нощ</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">3-4 души:</span>
-                        <span className="font-semibold text-primary">120 лв/нощ</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">5-6 души:</span>
-                        <span className="font-semibold text-primary">150 лв/нощ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mt-6 p-4 bg-accent/20 rounded-lg">
-                  <h4 className="font-semibold text-foreground mb-2">
-                    Специални оферти
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    При резервация за повече от 3 нощувки - 10% отстъпка!
-                  </p>
-                </div>
+
+
+
+
+
+                {/*<div className="mt-6 p-4 bg-accent/20 rounded-lg">*/}
+                {/*  <h4 className="font-semibold text-foreground mb-2">*/}
+                {/*    Специални оферти*/}
+                {/*  </h4>*/}
+                {/*  <p className="text-sm text-muted-foreground">*/}
+                {/*    При резервация за повече от 3 нощувки - 10% отстъпка!*/}
+                {/*  </p>*/}
+                {/*</div>*/}
               </CardContent>
             </Card>
           </div>

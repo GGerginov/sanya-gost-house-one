@@ -12,12 +12,12 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(onComplete, 500);
+          setTimeout(onComplete, 30);
           return 100;
         }
-        return prev + 2;
+        return prev + 5;
       });
-    }, 50);
+    }, 40);
 
     return () => clearInterval(timer);
   }, [onComplete]);
@@ -25,17 +25,11 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
   return (
     <div className="fixed inset-0 bg-background z-50 flex items-center justify-center">
       <div className="text-center">
-        {/* Placeholder Logo */}
-        <div className="w-24 h-24 mx-auto mb-8 bg-gradient-primary rounded-full flex items-center justify-center shadow-glow animate-pulse">
-          <span className="text-2xl font-bold text-primary-foreground">С</span>
-        </div>
 
-        <h1 className="text-3xl font-bold text-primary mb-4 animate-text-glow">
-          Къща за гости Саня
-        </h1>
+        <img src="/src/assets/logo2.svg" alt="Къща за гости Саня" className="w-96 h-56" />
 
-        {/* Progress bar */}
-        <div className="w-64 h-1 bg-muted rounded-full overflow-hidden">
+
+        <div className="w-full h-1 bg-muted rounded-full overflow-hidden">
           <div 
             className="h-full bg-gradient-primary transition-all duration-100 ease-out"
             style={{ width: `${progress}%` }}
