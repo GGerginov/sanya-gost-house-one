@@ -50,33 +50,53 @@ const Contacts = () => {
                     <p className="text-muted-foreground">+359 884 88 51 14</p>
                   </div>
                 </div>
-                
-
               </CardContent>
             </Card>
 
             <Card className="shadow-warm">
               <CardHeader>
-                <CardTitle className="text-primary">Резервация</CardTitle>
+                <CardTitle className="text-primary flex items-center">
+                  <Clock className="w-5 h-5 mr-2" />
+                  Резервация и работно време
+                </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground">
-                  За резервация или допълнителна информация, моля свържете се с нас 
-                  по телефона или изпратете email. Ще се радваме да ви посрещнем!
-                </p>
+              <CardContent className="space-y-6">
+                <div className="flex items-start space-x-3">
+                  <Clock className="w-5 h-5 text-primary mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-foreground">Работно време</h4>
+                    <p className="text-muted-foreground">Всеки ден: 8:00 - 22:00</p>
+                    <p className="text-sm text-muted-foreground">Приемаме гости целогодишно</p>
+                  </div>
+                </div>
+                
+                <div className="p-4 bg-primary/10 rounded-lg">
+                  <h4 className="font-semibold text-foreground mb-2">
+                    Как да резервирате
+                  </h4>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    За резервация или допълнителна информация, моля свържете се с нас 
+                    по телефона или изпратете email. Ще се радваме да ви посрещнем!
+                  </p>
+                </div>
 
-
-
-
-
-                {/*<div className="mt-6 p-4 bg-accent/20 rounded-lg">*/}
-                {/*  <h4 className="font-semibold text-foreground mb-2">*/}
-                {/*    Специални оферти*/}
-                {/*  </h4>*/}
-                {/*  <p className="text-sm text-muted-foreground">*/}
-                {/*    При резервация за повече от 3 нощувки - 10% отстъпка!*/}
-                {/*  </p>*/}
-                {/*</div>*/}
+                <div className="flex flex-col space-y-3">
+                  <Button 
+                    className="w-full" 
+                    onClick={() => window.open('tel:+359884208038')}
+                  >
+                    <Phone className="w-4 h-4 mr-2" />
+                    Обадете се сега
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => window.open('mailto:guesthousesanya@gmail.com')}
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    Изпратете email
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
