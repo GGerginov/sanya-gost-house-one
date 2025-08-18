@@ -2,73 +2,46 @@ import { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import LazyImage from "@/components/LazyImage.tsx";
 
-// Import all gallery images
-import img1 from '@/assets/gallery/DSC_3424.jpg';
-import img2 from '@/assets/gallery/DSC_3427.jpg';
-import img3 from '@/assets/gallery/DSC_3429.jpg';
-import img4 from '@/assets/gallery/DSC_3430.jpg';
-import img5 from '@/assets/gallery/DSC_3432.jpg';
-import img6 from '@/assets/gallery/DSC_3434.jpg';
-import img7 from '@/assets/gallery/DSC_3435.jpg';
-import img8 from '@/assets/gallery/DSC_3436.jpg';
-import img9 from '@/assets/gallery/DSC_3437.jpg';
-import img10 from '@/assets/gallery/DSC_3438.jpg';
-import img11 from '@/assets/gallery/DSC_3439.jpg';
-import img12 from '@/assets/gallery/DSC_3440.jpg';
-import img13 from '@/assets/gallery/DSC_3441.jpg';
-import img14 from '@/assets/gallery/DSC_3442.jpg';
-import img15 from '@/assets/gallery/DSC_3443.jpg';
-import img16 from '@/assets/gallery/DSC_3445.jpg';
-import img17 from '@/assets/gallery/DSC_3446.jpg';
-import img18 from '@/assets/gallery/DSC_3447.jpg';
-import img19 from '@/assets/gallery/DSC_3448.jpg';
-import img20 from '@/assets/gallery/DSC_3449.jpg';
-import img21 from '@/assets/gallery/DSC_3450.jpg';
-import img22 from '@/assets/gallery/DSC_3451.jpg';
-import img23 from '@/assets/gallery/DSC_3452.jpg';
-import img24 from '@/assets/gallery/DSC_3453.jpg';
-import img25 from '@/assets/gallery/DSC_3454.jpg';
-import img26 from '@/assets/gallery/DSC_3455.jpg';
-import img27 from '@/assets/gallery/DSC_3456.jpg';
-import img28 from '@/assets/gallery/DSC_3459.jpg';
-import img29 from '@/assets/gallery/DSC_3465.jpg';
-import img30 from '@/assets/gallery/DSC_3497.jpg';
-
 const PhotoGallery = () => {
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const photos = [
-        { src: img1, alt: 'Къща за гости Саня' },
-        { src: img2, alt: 'Къща за гости Саня' },
-        { src: img3, alt: 'Къща за гости Саня' },
-        { src: img4, alt: 'Къща за гости Саня' },
-        { src: img5, alt: 'Къща за гости Саня' },
-        { src: img6, alt: 'Къща за гости Саня' },
-        { src: img7, alt: 'Къща за гости Саня' },
-        { src: img8, alt: 'Къща за гости Саня' },
-        { src: img9, alt: 'Къща за гости Саня' },
-        { src: img10, alt: 'Къща за гости Саня' },
-        { src: img11, alt: 'Къща за гости Саня' },
-        { src: img12, alt: 'Къща за гости Саня' },
-        { src: img13, alt: 'Къща за гости Саня' },
-        { src: img14, alt: 'Къща за гости Саня' },
-        { src: img15, alt: 'Къща за гости Саня' },
-        { src: img16, alt: 'Къща за гости Саня' },
-        { src: img17, alt: 'Къща за гости Саня' },
-        { src: img18, alt: 'Къща за гости Саня' },
-        { src: img19, alt: 'Къща за гости Саня' },
-        { src: img20, alt: 'Къща за гости Саня' },
-        { src: img21, alt: 'Къща за гости Саня' },
-        { src: img22, alt: 'Къща за гости Саня' },
-        { src: img23, alt: 'Къща за гости Саня' },
-        { src: img24, alt: 'Къща за гости Саня' },
-        { src: img25, alt: 'Къща за гости Саня' },
-        { src: img26, alt: 'Къща за гости Саня' },
-        { src: img27, alt: 'Къща за гости Саня' },
-        { src: img28, alt: 'Къща за гости Саня' },
-        { src: img29, alt: 'Къща за гости Саня' },
-        { src: img30, alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3424.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3425.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3426.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3427.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3429.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3430.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3432.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3434.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3435.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3436.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3437.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3438.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3439.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3440.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3441.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3442.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3443.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3445.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3446.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3447.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3448.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3449.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3450.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3451.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3452.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3453.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3454.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3455.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3456.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3459.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3462.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3465.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3497.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3559.jpg', alt: 'Къща за гости Саня' },
+        { src: '/assets/gallery/DSC_3561.jpg', alt: 'Къща за гости Саня' },
     ];
 
     const photosPerSlide = 4;
