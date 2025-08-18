@@ -35,11 +35,9 @@ const PhotoGallery = () => {
         { src: 'src/assets/gallery/DSC_3455.jpg', alt: 'Photo' },
         { src: 'src/assets/gallery/DSC_3456.jpg', alt: 'Photo' },
         { src: 'src/assets/gallery/DSC_3459.jpg', alt: 'Photo' },
-        { src: 'src/assets/gallery/DSC_3462.jpg', alt: 'Photo' },
         { src: 'src/assets/gallery/DSC_3465.jpg', alt: 'Photo' },
         { src: 'src/assets/gallery/DSC_3497.jpg', alt: 'Photo' },
         { src: 'src/assets/gallery/DSC_3459.jpg', alt: 'Photo' },
-        { src: 'src/assets/gallery/DSC_3561.jpg', alt: 'Photo' },
     ];
 
     const photosPerSlide = 4;

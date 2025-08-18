@@ -57,19 +57,11 @@ const Contacts = () => {
               <CardHeader>
                 <CardTitle className="text-primary flex items-center">
                   <Clock className="w-5 h-5 mr-2" />
-                  Резервация и работно време
+                  За резервации
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-start space-x-3">
-                  <Clock className="w-5 h-5 text-primary mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-foreground">Работно време</h4>
-                    <p className="text-muted-foreground">Всеки ден: 8:00 - 22:00</p>
-                    <p className="text-sm text-muted-foreground">Приемаме гости целогодишно</p>
-                  </div>
-                </div>
-                
+
                 <div className="p-4 bg-primary/10 rounded-lg">
                   <h4 className="font-semibold text-foreground mb-2">
                     Как да резервирате

@@ -73,11 +73,12 @@ const Location = () => {
               ))}
             </div>
           </div>
+
           <div className="w-full pt-10">
             <iframe width="100%" height="600" frameBorder="0" scrolling="no"
-                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=42.313505,%2023.516860+(%D0%9A%D1%8A%D1%89%D0%B0%20%D0%B7%D0%B0%20%D0%B3%D0%BE%D1%81%D1%82%D0%B8%20%D0%A1%D0%B0%D0%BD%D1%8F)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-              <a href="https://www.mapsdirections.info/fr/calculer-la-population-sur-une-carte">mesurer la population
-                sur une carte</a></iframe>
+                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=%D1%83%D0%BB.%208-%D0%BC%D0%B0%2010,%202012%20Dospey+(My%20Business%20Name)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+              <a href="https://www.mapsdirections.info/fr/calculer-la-population-sur-une-carte">Carte
+                démographique</a></iframe>
           </div>
         </div>
       </div>
