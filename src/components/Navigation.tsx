@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import logo from '@/assets/logo1.svg';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,7 +24,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4  max-sm:flex max-sm:justify-center">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2 align-middle">
-            <img src={logo} alt="Къща за гости Саня" className="w-80" />
+            <img src="/src/assets/logo1.svg" alt="Къща за гости Саня" className="w-80" />
           </div>
           
           <div className="hidden md:flex space-x-8">

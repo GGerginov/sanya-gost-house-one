@@ -1,25 +1,25 @@
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import room1 from '@/assets/room/DSC_3507.jpg';
-import room2 from '@/assets/room/DSC_3512.jpg';
-import room4 from '@/assets/room/DSC_3516.jpg';
-import livingRoom1 from '@/assets/room/DSC_3501.jpg'
-import livingRoom2 from '@/assets/room/DSC_3503.jpg'
-import livingRoom3 from '@/assets/room/DSC_3506.jpg'
-import livingRoom4 from '@/assets/room/DSC_3525.jpg'
+import room1 from '../../public/assets/room/DSC_3507.jpg';
+import room2 from '../../public/assets/room/DSC_3512.jpg';
+import room4 from '../../public/assets/room/DSC_3516.jpg';
+import livingRoom1 from '../../public/assets/room/DSC_3501.jpg'
+import livingRoom2 from '../../public/assets/room/DSC_3503.jpg'
+import livingRoom3 from '../../public/assets/room/DSC_3506.jpg'
+import livingRoom4 from '../../public/assets/room/DSC_3525.jpg'
 
-import mehana1 from "@/assets/mehana/DSC_3475.jpg";
-import mehana2 from "@/assets/mehana/DSC_3476.jpg";
-import mehana3 from "@/assets/mehana/DSC_3477.jpg";
-import mehana4 from "@/assets/mehana/DSC_3478.jpg";
-import mehana5 from "@/assets/mehana/DSC_3487.jpg";
-import mehana6 from "@/assets/mehana/DSC_3488.jpg";
-import mehana7 from "@/assets/mehana/DSC_3489.jpg";
-import mehana8 from "@/assets/mehana/DSC_3490.jpg";
-import mehana9 from "@/assets/mehana/DSC_3491.jpg";
-import mehana10 from "@/assets/mehana/DSC_3492.jpg";
-import mehana11 from "@/assets/mehana/DSC_3493.jpg";
+import mehana1 from "../../public/assets/mehana/DSC_3475.jpg";
+import mehana2 from "../../public/assets/mehana/DSC_3476.jpg";
+import mehana3 from "../../public/assets/mehana/DSC_3477.jpg";
+import mehana4 from "../../public/assets/mehana/DSC_3478.jpg";
+import mehana5 from "../../public/assets/mehana/DSC_3487.jpg";
+import mehana6 from "../../public/assets/mehana/DSC_3488.jpg";
+import mehana7 from "../../public/assets/mehana/DSC_3489.jpg";
+import mehana8 from "../../public/assets/mehana/DSC_3490.jpg";
+import mehana9 from "../../public/assets/mehana/DSC_3491.jpg";
+import mehana10 from "../../public/assets/mehana/DSC_3492.jpg";
+import mehana11 from "../../public/assets/mehana/DSC_3493.jpg";
 import LazyImage from "@/components/LazyImage.tsx";
 
 const Rooms = () => {

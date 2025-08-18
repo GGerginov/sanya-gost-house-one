@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import logo from '@/assets/logo2.svg';
 
 interface PreloaderProps {
   onComplete: () => void;
@@ -27,7 +26,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
     <div className="fixed inset-0 bg-background z-50 flex items-center justify-center">
       <div className="text-center">
 
-        <img src={logo} alt="Къща за гости Саня" className="w-96 h-56" />
+        <img src="/src/assets/logo2.svg" alt="Къща за гости Саня" className="w-96 h-56" />
 
 
         <div className="w-full h-1 bg-muted rounded-full overflow-hidden">
