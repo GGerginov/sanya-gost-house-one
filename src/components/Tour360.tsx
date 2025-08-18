@@ -3,11 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Play, Maximize2, Minimize2, Sofa, Bed, ChefHat, Bath, TreePine, Waves } from 'lucide-react';
 
-// Import videos
-import apartmentVideo from '@/assets/Apartment.mp4';
-import relaxVideo from '@/assets/Relax.mp4';
-import mehanaVideo from '@/assets/Mehana.mp4';
-import kidsVideo from '@/assets/KidsPlace.mp4';
+// Video URLs from public assets
+const apartmentVideo = '/assets/Apartment.mp4';
+const relaxVideo = '/assets/Relax.mp4';
+const mehanaVideo = '/assets/Mehana.mp4';
+const kidsVideo = '/assets/KidsPlace.mp4';
 
 const Tour360 = () => {
     const [activeRoom, setActiveRoom] = useState(0);
