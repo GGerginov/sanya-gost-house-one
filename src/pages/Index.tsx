@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Preloader from '../components/Preloader';
 import PhotoGallery from "@/components/PhotoGallery.tsx";
 import Tour360 from "@/components/Tour360.tsx";
+import {SpeedInsights} from "@vercel/speed-insights/next";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +33,7 @@ const Index = () => {
       <Location />
       <Contacts />
       <Footer />
+        <SpeedInsights />
     </div>
   );
 };
