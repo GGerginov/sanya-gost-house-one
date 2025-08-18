@@ -144,11 +144,13 @@ const PhotoGallery = () => {
                                                 className="group cursor-pointer"
                                                 onClick={() => openModal(slideIndex * photosPerSlide + photoIndex)}
                                             >
-                                                <div className="relative overflow-hidden rounded-lg shadow-warm hover:shadow-glow transition-all duration-300">
+                                                 <div className="relative overflow-hidden rounded-lg shadow-warm hover:shadow-glow transition-all duration-300">
                                                     <LazyImage
                                                         src={photo.src}
                                                         alt={photo.alt}
-                                                        className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                                                        className="w-full h-64"
+                                                        priority={slideIndex === currentSlide && photoIndex < 2}
+                                                        preload={slideIndex === currentSlide + 1 || slideIndex === currentSlide - 1}
                                                     />
                                                     <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                                         <div className="text-white text-lg font-medium">Разгледай</div>
@@ -217,6 +219,7 @@ const PhotoGallery = () => {
                                     src={photos[selectedImage].src}
                                     alt={photos[selectedImage].alt}
                                     className="w-full h-[70vh] object-contain rounded-lg"
+                                    priority={true}
                                 />
                             </div>
 
