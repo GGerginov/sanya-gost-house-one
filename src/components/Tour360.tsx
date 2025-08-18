@@ -3,6 +3,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Play, Maximize2, Minimize2, Sofa, Bed, ChefHat, Bath, TreePine, Waves } from 'lucide-react';
 
+// Import videos
+import apartmentVideo from '@/assets/Apartment.mp4';
+import relaxVideo from '@/assets/Relax.mp4';
+import mehanaVideo from '@/assets/Mehana.mp4';
+import kidsVideo from '@/assets/KidsPlace.mp4';
+
 const Tour360 = () => {
     const [activeRoom, setActiveRoom] = useState(0);
     const [isFullscreen, setIsFullscreen] = useState(false);
@@ -38,25 +44,25 @@ const Tour360 = () => {
             title: "Апартамент",
             description: "Удобен двустаен апартамент, създаден с грижа за комфорта на нашите гости",
             icon: Bed,
-            videoUrl: "src/assets/Apartment.mp4"
+            videoUrl: apartmentVideo
         },
         {
             title: "Кът за отдих",
             description: "Луксозно външно джакузи, шезлонгите и кътовете за сядане в просторния двор гарантират приятно и зареждащо преживяване",
             icon: Waves,
-            videoUrl: "src/assets/Relax.mp4"
+            videoUrl: relaxVideo
         },
         {
             title: "Барбекю",
             description: "Просторното и напълно оборудвано барбекю е идеално за тържества",
             icon: ChefHat,
-            videoUrl: "src/assets/Mehana.mp4"
+            videoUrl: mehanaVideo
         },
         {
             title: "Детски кът",
             description: "Забавна детска площадка, батут и много игри за малките ни гости",
             icon: TreePine,
-            videoUrl: "src/assets/KidsPlace.mp4"
+            videoUrl: kidsVideo
         }
     ];
 
