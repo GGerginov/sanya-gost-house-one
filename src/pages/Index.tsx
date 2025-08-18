@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import Preloader from '../components/Preloader';
 import PhotoGallery from "@/components/PhotoGallery.tsx";
 import Tour360 from "@/components/Tour360.tsx";
-import {SpeedInsights} from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
