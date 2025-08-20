@@ -15,7 +15,12 @@ const Navigation = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navHeight = 128; // Account for fixed nav height (min-h-32 = 128px)
+      const offsetTop = element.offsetTop - navHeight;
+      window.scrollTo({ 
+        top: offsetTop, 
+        behavior: 'smooth' 
+      });
     }
   };
 

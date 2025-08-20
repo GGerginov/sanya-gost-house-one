@@ -105,15 +105,16 @@ const Rooms = () => {
 
             <Card
                 key={rooms[0].id}
-                className="overflow-hidden shadow-warm hover:shadow-glow transition-all duration-300 cursor-pointer flex-1"
+                className="overflow-hidden shadow-warm hover:shadow-glow transition-all duration-500 cursor-pointer flex-1 hover:scale-105 hover:-translate-y-2"
                 onClick={() => openRoomModal(0)}
             >
-              <div className="aspect-video overflow-hidden">
+              <div className="aspect-video overflow-hidden relative group">
                 <LazyImage
                     src={rooms[0].images[0]}
                     alt={rooms[0].name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               <CardHeader>
                 <CardTitle className="text-xl text-primary">{rooms[0].name}</CardTitle>
@@ -146,15 +147,16 @@ const Rooms = () => {
 
             <Card
                 key={rooms[1].id}
-                className="overflow-hidden shadow-warm hover:shadow-glow transition-all duration-300 cursor-pointer flex-1"
+                className="overflow-hidden shadow-warm hover:shadow-glow transition-all duration-500 cursor-pointer flex-1 hover:scale-105 hover:-translate-y-2"
                 onClick={() => openRoomModal(1)}
             >
-              <div className="aspect-video overflow-hidden">
+              <div className="aspect-video overflow-hidden relative group">
                 <LazyImage
                     src={rooms[1].images[0]}
                     alt={rooms[1].name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               <CardHeader>
                 <CardTitle className="text-xl text-primary">{rooms[1].name}</CardTitle>
@@ -215,18 +217,18 @@ const Rooms = () => {
                 <>
                   <button
                     onClick={goToPrevious}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 backdrop-blur-sm"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 backdrop-blur-sm hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl"
                     aria-label="Предишна снимка"
                   >
-                    <ChevronLeft className="w-6 h-6" />
+                    <ChevronLeft className="w-6 h-6 transition-transform duration-200 hover:-translate-x-0.5" />
                   </button>
 
                   <button
                     onClick={goToNext}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 backdrop-blur-sm"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 backdrop-blur-sm hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl"
                     aria-label="Следваща снимка"
                   >
-                    <ChevronRight className="w-6 h-6" />
+                    <ChevronRight className="w-6 h-6 transition-transform duration-200 hover:translate-x-0.5" />
                   </button>
 
                   {/* Modal Slide Indicators */}
