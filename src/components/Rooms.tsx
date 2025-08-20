@@ -1,25 +1,7 @@
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import room1 from '../../public/assets/room/DSC_3507.jpg';
-import room2 from '../../public/assets/room/DSC_3512.jpg';
-import room4 from '../../public/assets/room/DSC_3516.jpg';
-import livingRoom1 from '../../public/assets/room/DSC_3501.jpg'
-import livingRoom2 from '../../public/assets/room/DSC_3503.jpg'
-import livingRoom3 from '../../public/assets/room/DSC_3506.jpg'
-import livingRoom4 from '../../public/assets/room/DSC_3525.jpg'
-
-import mehana1 from "../../public/assets/mehana/DSC_3475.jpg";
-import mehana2 from "../../public/assets/mehana/DSC_3476.jpg";
-import mehana3 from "../../public/assets/mehana/DSC_3477.jpg";
-import mehana4 from "../../public/assets/mehana/DSC_3478.jpg";
-import mehana5 from "../../public/assets/mehana/DSC_3487.jpg";
-import mehana6 from "../../public/assets/mehana/DSC_3488.jpg";
-import mehana7 from "../../public/assets/mehana/DSC_3489.jpg";
-import mehana8 from "../../public/assets/mehana/DSC_3490.jpg";
-import mehana9 from "../../public/assets/mehana/DSC_3491.jpg";
-import mehana10 from "../../public/assets/mehana/DSC_3492.jpg";
-import mehana11 from "../../public/assets/mehana/DSC_3493.jpg";
+// Use public URLs for assets instead of imports
 import LazyImage from "@/components/LazyImage.tsx";
 
 const Rooms = () => {
@@ -31,7 +13,15 @@ const Rooms = () => {
       id: 1,
       name: "Комфортен двустаен апартамент с планинска гледка",
       description: "",
-      images: [room1, room2,room4,livingRoom1, livingRoom2, livingRoom3,livingRoom4],
+      images: [
+        "/assets/room/DSC_3507.jpg",
+        "/assets/room/DSC_3512.jpg", 
+        "/assets/room/DSC_3516.jpg",
+        "/assets/room/DSC_3501.jpg",
+        "/assets/room/DSC_3503.jpg",
+        "/assets/room/DSC_3506.jpg",
+        "/assets/room/DSC_3525.jpg"
+      ],
       features: ["Удобно двойно легло в спалнята", "Разтегателни диван и фотьойл, масичка – в дневната", "Функционален санитарен възел", "WiFi","Хладилник",
         "Ютия, дъска за гладене, сушилка за дрехи, кана за топла вода, чаши",
         "Кърпи и халати, сешоар за коса, шампоанчета и сапунчета"]
@@ -40,7 +30,19 @@ const Rooms = () => {
       id: 2,
       name: "Просторно барбекю",
       description: "",
-      images: [mehana7,mehana1,mehana2,mehana3,mehana4,mehana5,mehana6,mehana8,mehana9,mehana10,mehana11],
+      images: [
+        "/assets/mehana/DSC_3489.jpg",
+        "/assets/mehana/DSC_3475.jpg", 
+        "/assets/mehana/DSC_3476.jpg",
+        "/assets/mehana/DSC_3477.jpg",
+        "/assets/mehana/DSC_3478.jpg",
+        "/assets/mehana/DSC_3487.jpg",
+        "/assets/mehana/DSC_3488.jpg",
+        "/assets/mehana/DSC_3490.jpg",
+        "/assets/mehana/DSC_3491.jpg",
+        "/assets/mehana/DSC_3492.jpg",
+        "/assets/mehana/DSC_3493.jpg"
+      ],
       features: ["Просторна зала с удобни маси - капацитет 24-30 души", "Камина", "Напълно оборудвана кухня",
         "Озвучителна система – колона и микрофони, възможност за свързване към различни устройства",
       "Навес с чешма, работна площ и две барбекюта за приготвяне на храна"]
@@ -168,7 +170,7 @@ const Rooms = () => {
             className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
             onClick={closeModal}
           >
-            <div className="relative max-w-5xl max-h-full bg-background rounded-lg" onClick={e => e.stopPropagation()}>
+            <div className="relative bg-background rounded-lg w-full max-w-6xl max-h-[90vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               {/* Close button */}
               <button
                 className="absolute top-4 right-4 z-30 text-foreground bg-background/80 rounded-full p-2 hover:bg-muted transition-colors"
@@ -177,63 +179,58 @@ const Rooms = () => {
                 <X className="w-6 h-6" />
               </button>
 
-              <div className="p-6">
+              <div className="relative overflow-hidden">
+                <div
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${modalSlide * 100}%)` }}
+                >
+                  {rooms[selectedRoom].images.map((image, index) => (
+                    <div key={index} className="w-full flex-shrink-0">
+                      <LazyImage
+                        src={image}
+                        alt={`${rooms[selectedRoom].name} - снимка ${index + 1}`}
+                        className="w-full h-[80vh] object-contain bg-muted"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-                <div className="relative overflow-hidden rounded-lg mb-4">
-                  <div
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${modalSlide * 100}%)` }}
+              {rooms[selectedRoom].images.length > 1 && (
+                <>
+                  <button
+                    onClick={goToPrevious}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 backdrop-blur-sm"
+                    aria-label="Предишна снимка"
                   >
-                    {rooms[selectedRoom].images.map((image, index) => (
-                      <div key={index} className="w-full flex-shrink-0">
-                        <LazyImage
-                          src={image}
-                          alt={`${rooms[selectedRoom].name} - снимка ${index + 1}`}
-                          className="w-full h-[60vh] object-cover"
-                        />
-                      </div>
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+
+                  <button
+                    onClick={goToNext}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 backdrop-blur-sm"
+                    aria-label="Следваща снимка"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+
+                  {/* Modal Slide Indicators */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center space-x-2 bg-black/30 backdrop-blur-sm rounded-full px-4 py-2">
+                    {rooms[selectedRoom].images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setModalSlide(index)}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                          index === modalSlide 
+                            ? 'bg-white scale-125' 
+                            : 'bg-white/50 hover:bg-white/70'
+                        }`}
+                        aria-label={`Отиди на снимка ${index + 1}`}
+                      />
                     ))}
                   </div>
-                </div>
-
-                {rooms[selectedRoom].images.length > 1 && (
-                  <>
-                    <button
-                      onClick={goToPrevious}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
-                      aria-label="Предишна снимка"
-                    >
-                      <ChevronLeft className="w-6 h-6" />
-                    </button>
-
-                    <button
-                      onClick={goToNext}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
-                      aria-label="Следваща снимка"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
-
-                    {/* Modal Slide Indicators */}
-                    <div className="flex justify-center space-x-2 mb-4">
-                      {rooms[selectedRoom].images.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => setModalSlide(index)}
-                          className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                            index === modalSlide 
-                              ? 'bg-primary scale-125' 
-                              : 'bg-muted-foreground hover:bg-primary/70'
-                          }`}
-                          aria-label={`Отиди на снимка ${index + 1}`}
-                        />
-                      ))}
-                    </div>
-                  </>
-                )}
-
-
-              </div>
+                </>
+              )}
             </div>
           </div>
         )}
