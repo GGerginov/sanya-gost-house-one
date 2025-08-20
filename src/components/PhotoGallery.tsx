@@ -7,33 +7,17 @@ const PhotoGallery = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const photos = [
-        { src: '/assets/gallery/DSC_3424.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3425.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3426.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3427.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3429.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3430.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3432.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3434.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3435.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3436.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3437.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3438.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3439.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3440.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3441.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3442.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3443.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3445.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3446.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3447.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3448.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3449.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3450.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3451.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3452.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3453.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3454.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3455.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3456.jpg', alt: 'Къща за гости Саня' },
         { src: '/assets/gallery/DSC_3459.jpg', alt: 'Къща за гости Саня' },
@@ -90,7 +74,7 @@ const PhotoGallery = () => {
     };
 
     return (
-        <section className="py-20 bg-gradient-hero">
+        <section id="gallery" className="py-20 bg-gradient-hero">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">

@@ -100,15 +100,22 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span className="text-primary-foreground/80">+359 884 20 80 38</span>
+                <span className="text-primary-foreground/80"
+                      onClick={() => (window.location.href = 'tel:+359884208038')}
+                >+359 884 20 80 38</span>
+
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span className="text-primary-foreground/80">+359 884 88 51 14</span>
+                <span className="text-primary-foreground/80"
+                      onClick={() => (window.location.href = 'tel:+359884885114')}
+                >+359 884 88 51 14</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
-                <span className="text-primary-foreground/80">guesthousesanya@gmail.com</span>
+                <span className="text-primary-foreground/80"
+                      onClick={() => (window.location.href = 'mailto:guesthousesanya@gmail.com')}>
+                  guesthousesanya@gmail.com</span>
               </div>
               <div className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 mt-1" />

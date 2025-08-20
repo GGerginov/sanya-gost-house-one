@@ -74,8 +74,8 @@ const Contacts = () => {
 
                 <div className="flex flex-col space-y-3">
                   <Button 
-                    className="w-full" 
-                    onClick={() => window.open('tel:+359884208038')}
+                    className="w-full"
+                    onClick={() => (window.location.href = 'tel:+359884208038')}
                   >
                     <Phone className="w-4 h-4 mr-2" />
                     Обадете се сега
@@ -83,7 +83,7 @@ const Contacts = () => {
                   <Button 
                     variant="outline" 
                     className="w-full"
-                    onClick={() => window.open('mailto:guesthousesanya@gmail.com')}
+                    onClick={() => (window.location.href = 'mailto:guesthousesanya@gmail.com')}
                   >
                     <Mail className="w-4 h-4 mr-2" />
                     Изпратете email
