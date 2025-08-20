@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 // Use public URLs for assets instead of imports
@@ -7,6 +7,7 @@ import LazyImage from "@/components/LazyImage.tsx";
 const Rooms = () => {
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
   const [modalSlide, setModalSlide] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<number>(0);
 
   const rooms = [
     {
@@ -52,25 +53,39 @@ const Rooms = () => {
   const openRoomModal = (roomIndex: number) => {
     setSelectedRoom(roomIndex);
     setModalSlide(0);
+    setLoadedImages(1); // Start with first image
   };
 
   const closeModal = () => {
     setSelectedRoom(null);
+    setLoadedImages(0);
   };
+
+  // Sequential image loading effect
+  useEffect(() => {
+    if (selectedRoom !== null && loadedImages > 0) {
+      const currentRoom = rooms[selectedRoom];
+      if (loadedImages < currentRoom.images.length) {
+        const timer = setTimeout(() => {
+          setLoadedImages(prev => prev + 1);
+        }, 300); // Load next image after 300ms
+        
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [selectedRoom, loadedImages, rooms]);
 
   const goToPrevious = () => {
     if (selectedRoom !== null) {
-      const currentRoom = rooms[selectedRoom];
       setModalSlide((prev) =>
-        prev === 0 ? currentRoom.images.length - 1 : prev - 1
+        prev === 0 ? loadedImages - 1 : prev - 1
       );
     }
   };
 
   const goToNext = () => {
     if (selectedRoom !== null) {
-      const currentRoom = rooms[selectedRoom];
-      setModalSlide((prev) => (prev + 1) % currentRoom.images.length);
+      setModalSlide((prev) => (prev + 1) % loadedImages);
     }
   };
 
@@ -184,7 +199,7 @@ const Rooms = () => {
                   className="flex transition-transform duration-500 ease-in-out"
                   style={{ transform: `translateX(-${modalSlide * 100}%)` }}
                 >
-                  {rooms[selectedRoom].images.map((image, index) => (
+                  {rooms[selectedRoom].images.slice(0, loadedImages).map((image, index) => (
                     <div key={index} className="w-full flex-shrink-0">
                       <LazyImage
                         src={image}
@@ -216,7 +231,7 @@ const Rooms = () => {
 
                   {/* Modal Slide Indicators */}
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center space-x-2 bg-black/30 backdrop-blur-sm rounded-full px-4 py-2">
-                    {rooms[selectedRoom].images.map((_, index) => (
+                    {rooms[selectedRoom].images.slice(0, loadedImages).map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setModalSlide(index)}
