@@ -96,24 +96,27 @@ const PhotoGallery = () => {
                                 <div key={slideIndex} className="w-full flex-shrink-0">
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4">
                                         {photos.slice(slideIndex * photosPerSlide, (slideIndex + 1) * photosPerSlide).map((photo, photoIndex) => (
-                                            <div
-                                                key={slideIndex * photosPerSlide + photoIndex}
-                                                className="group cursor-pointer"
-                                                onClick={() => openModal(slideIndex * photosPerSlide + photoIndex)}
-                                            >
-                                                 <div className="relative overflow-hidden rounded-lg shadow-warm hover:shadow-glow transition-all duration-300">
-                                                    <LazyImage
-                                                        src={photo.src}
-                                                        alt={photo.alt}
-                                                        className="w-full h-64"
-                                                        priority={slideIndex === currentSlide && photoIndex < 2}
-                                                        preload={slideIndex === currentSlide + 1 || slideIndex === currentSlide - 1}
-                                                    />
-                                                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                                        <div className="text-white text-lg font-medium">Разгледай</div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                             <div
+                                                 key={slideIndex * photosPerSlide + photoIndex}
+                                                 className="group cursor-pointer transform transition-all duration-300 hover:scale-105"
+                                                 onClick={() => openModal(slideIndex * photosPerSlide + photoIndex)}
+                                             >
+                                                  <div className="relative overflow-hidden rounded-lg shadow-warm hover:shadow-glow transition-all duration-500 group-hover:shadow-2xl">
+                                                     <LazyImage
+                                                         src={photo.src}
+                                                         alt={photo.alt}
+                                                         className="w-full h-64 transition-transform duration-500 group-hover:scale-110"
+                                                         priority={slideIndex === currentSlide && photoIndex < 2}
+                                                         preload={slideIndex === currentSlide + 1 || slideIndex === currentSlide - 1}
+                                                     />
+                                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-4">
+                                                         <div className="text-white text-lg font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Разгледай</div>
+                                                     </div>
+                                                     <div className="absolute top-2 right-2 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
+                                                         <div className="w-4 h-4 border-2 border-white rounded-full"></div>
+                                                     </div>
+                                                 </div>
+                                             </div>
                                         ))}
                                     </div>
                                 </div>
@@ -124,18 +127,18 @@ const PhotoGallery = () => {
                     {/* Navigation arrows */}
                     <button
                         onClick={goToPreviousSlide}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/40 text-white transition-all duration-300 backdrop-blur-sm hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl"
                         aria-label="Предишна група снимки"
                     >
-                        <ChevronLeft className="w-6 h-6" />
+                        <ChevronLeft className="w-6 h-6 transition-transform duration-200 group-hover:-translate-x-0.5" />
                     </button>
 
                     <button
                         onClick={goToNextSlide}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/40 text-white transition-all duration-300 backdrop-blur-sm hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl"
                         aria-label="Следваща група снимки"
                     >
-                        <ChevronRight className="w-6 h-6" />
+                        <ChevronRight className="w-6 h-6 transition-transform duration-200 group-hover:translate-x-0.5" />
                     </button>
 
                     {/* Slide indicators */}
