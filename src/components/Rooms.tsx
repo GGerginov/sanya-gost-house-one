@@ -206,7 +206,7 @@ const Rooms = () => {
                       <LazyImage
                         src={image}
                         alt={`${rooms[selectedRoom].name} - снимка ${index + 1}`}
-                        className="w-full h-[80vh] object-contain bg-muted"
+                        className="w-full h-[50vh] sm:h-[80vh] object-contain bg-muted"
                       />
                     </div>
                   ))}

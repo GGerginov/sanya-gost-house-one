@@ -1,215 +1,229 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import LazyImage from "@/components/LazyImage.tsx";
+import LazyImage from '@/components/LazyImage.tsx';
 
 const PhotoGallery = () => {
-    const [selectedImage, setSelectedImage] = useState<number | null>(null);
-    const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isInView, setIsInView] = useState(false);
 
-    const photos = [
-        { src: '/assets/gallery/DSC_3425.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3427.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3429.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3430.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3432.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3434.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3435.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3437.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3445.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3447.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3450.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3455.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3456.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3459.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3462.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3465.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3497.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3559.jpg', alt: 'Къща за гости Саня' },
-        { src: '/assets/gallery/DSC_3561.jpg', alt: 'Къща за гости Саня' },
-    ];
+  const galleryRef = useRef<HTMLElement | null>(null);
 
-    const photosPerSlide = 4;
-    const totalSlides = Math.ceil(photos.length / photosPerSlide);
+  const photos = [
+    { src: '/assets/gallery/DSC_3425.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3427.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3434.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3435.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3437.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3445.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3447.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3450.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3455.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3456.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3459.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3462.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3465.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3497.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3559.jpg', alt: 'Къща за гости Саня' },
+    { src: '/assets/gallery/DSC_3561.jpg', alt: 'Къща за гости Саня' },
+  ];
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentSlide(prev => (prev + 1) % totalSlides);
-        }, 5000);
+  const photosPerSlide = 4;
+  const totalSlides = Math.ceil(photos.length / photosPerSlide);
 
-        return () => clearInterval(interval);
-    }, [totalSlides]);
+  // Наблюдавай дали секцията е в изглед (поне 50%)
+  useEffect(() => {
+    const node = galleryRef.current;
+    if (!node) return;
 
-    const openModal = (index: number) => {
-        setSelectedImage(index);
-    };
-
-    const closeModal = () => {
-        setSelectedImage(null);
-    };
-
-    const goToPrevious = () => {
-        if (selectedImage !== null) {
-            setSelectedImage(selectedImage === 0 ? photos.length - 1 : selectedImage - 1);
-        }
-    };
-
-    const goToNext = () => {
-        if (selectedImage !== null) {
-            setSelectedImage((selectedImage + 1) % photos.length);
-        }
-    };
-
-    const goToPreviousSlide = () => {
-        setCurrentSlide(prev => prev === 0 ? totalSlides - 1 : prev - 1);
-    };
-
-    const goToNextSlide = () => {
-        setCurrentSlide(prev => (prev + 1) % totalSlides);
-    };
-
-    const getCurrentSlidePhotos = () => {
-        const start = currentSlide * photosPerSlide;
-        const end = start + photosPerSlide;
-        return photos.slice(start, end);
-    };
-
-    return (
-        <section id="gallery" className="py-20 bg-gradient-hero">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                        Фото Галерия
-                    </h2>
-                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                        Открийте красотата на нашето място през тези снимки
-                    </p>
-                </div>
-
-                {/* Carousel Gallery */}
-                <div className="relative max-w-6xl mx-auto">
-                    <div className="overflow-hidden rounded-lg">
-                        <div
-                            className="flex transition-transform duration-500 ease-in-out"
-                            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                        >
-                            {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                                <div key={slideIndex} className="w-full flex-shrink-0">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4">
-                                        {photos.slice(slideIndex * photosPerSlide, (slideIndex + 1) * photosPerSlide).map((photo, photoIndex) => (
-                                             <div
-                                                 key={slideIndex * photosPerSlide + photoIndex}
-                                                 className="group cursor-pointer transform transition-all duration-300 hover:scale-105"
-                                                 onClick={() => openModal(slideIndex * photosPerSlide + photoIndex)}
-                                             >
-                                                  <div className="relative overflow-hidden rounded-lg shadow-warm hover:shadow-glow transition-all duration-500 group-hover:shadow-2xl">
-                                                     <LazyImage
-                                                         src={photo.src}
-                                                         alt={photo.alt}
-                                                         className="w-full h-64 transition-transform duration-500 group-hover:scale-110"
-                                                         priority={slideIndex === currentSlide && photoIndex < 2}
-                                                         preload={slideIndex === currentSlide + 1 || slideIndex === currentSlide - 1}
-                                                     />
-                                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-4">
-                                                         <div className="text-white text-lg font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Разгледай</div>
-                                                     </div>
-                                                     <div className="absolute top-2 right-2 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
-                                                         <div className="w-4 h-4 border-2 border-white rounded-full"></div>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Navigation arrows */}
-                    <button
-                        onClick={goToPreviousSlide}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/40 text-white transition-all duration-300 backdrop-blur-sm hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl"
-                        aria-label="Предишна група снимки"
-                    >
-                        <ChevronLeft className="w-6 h-6 transition-transform duration-200 group-hover:-translate-x-0.5" />
-                    </button>
-
-                    <button
-                        onClick={goToNextSlide}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/40 text-white transition-all duration-300 backdrop-blur-sm hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl"
-                        aria-label="Следваща група снимки"
-                    >
-                        <ChevronRight className="w-6 h-6 transition-transform duration-200 group-hover:translate-x-0.5" />
-                    </button>
-
-                    {/* Slide indicators */}
-                    <div className="flex justify-center space-x-2 mt-8">
-                        {Array.from({ length: totalSlides }).map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrentSlide(index)}
-                                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                    index === currentSlide
-                                        ? 'bg-primary scale-125'
-                                        : 'bg-muted-foreground hover:bg-primary/70'
-                                }`}
-                                aria-label={`Отиди на група ${index + 1}`}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                {/* Modal with slider */}
-                {selectedImage !== null && (
-                    <div
-                        className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
-                        onClick={closeModal}
-                    >
-                        <div className="relative max-w-4xl max-h-full" onClick={e => e.stopPropagation()}>
-                            {/* Close button */}
-                            <button
-                                className="absolute top-4 right-4 z-30 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 transition-colors"
-                                onClick={closeModal}
-                            >
-                                <X className="w-6 h-6" />
-                            </button>
-
-                            {/* Image */}
-                            <div className="relative">
-                                <LazyImage
-                                    src={photos[selectedImage].src}
-                                    alt={photos[selectedImage].alt}
-                                    className="w-full h-[70vh] object-contain rounded-lg"
-                                    priority={true}
-                                />
-                            </div>
-
-                            {/* Navigation Arrows */}
-                            <button
-                                onClick={goToPrevious}
-                                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
-                                aria-label="Предишна снимка"
-                            >
-                                <ChevronLeft className="w-6 h-6" />
-                            </button>
-
-                            <button
-                                onClick={goToNext}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-300 backdrop-blur-sm"
-                                aria-label="Следваща снимка"
-                            >
-                                <ChevronRight className="w-6 h-6" />
-                            </button>
-
-                            {/* Image counter */}
-                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
-                                {selectedImage + 1} / {photos.length}
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </div>
-        </section>
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.5 }
     );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  // Автоматична смяна на слайдовете само когато секцията е видима и няма отворен модал
+  useEffect(() => {
+    if (!isInView || selectedImage !== null) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    }, 9000);
+
+    return () => clearInterval(interval);
+  }, [isInView, selectedImage, totalSlides]);
+
+  // Заключване на body скрола при отворен модал + клавиатура
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (selectedImage === null) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft') goToPrevious();
+      if (e.key === 'ArrowRight') goToNext();
+    };
+
+    if (selectedImage !== null) {
+      document.addEventListener('keydown', handleKey);
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.removeEventListener('keydown', handleKey);
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [selectedImage]);
+
+  const openModal = (index: number) => setSelectedImage(index);
+  const closeModal = () => setSelectedImage(null);
+
+  const goToPrevious = () => {
+    if (selectedImage === null) return;
+    setSelectedImage(selectedImage === 0 ? photos.length - 1 : selectedImage - 1);
+  };
+
+  const goToNext = () => {
+    if (selectedImage === null) return;
+    setSelectedImage((selectedImage + 1) % photos.length);
+  };
+
+  const goToPreviousSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
+  };
+
+  const goToNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const getCurrentSlidePhotos = () => {
+    const start = currentSlide * photosPerSlide;
+    const end = start + photosPerSlide;
+    return photos.slice(start, end);
+  };
+
+  const currentItems = getCurrentSlidePhotos();
+
+  return (
+    <section id="gallery" ref={galleryRef as React.RefObject<HTMLElement>} className="py-20 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-bold text-foreground mb-3">Галерия</h2>
+          <p className="text-muted-foreground">Разгледайте атмосферата и удобствата при нас</p>
+        </div>
+
+        <div className="relative">
+          {/* Контроли за слайдове */}
+          <button
+            aria-label="Предишен слайд"
+            onClick={goToPreviousSlide}
+            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-background/80 shadow hover:bg-background transition"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            aria-label="Следващ слайд"
+            onClick={goToNextSlide}
+            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-background/80 shadow hover:bg-background transition"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+
+          {/* Грид със снимки (2x2 на мобилни, 4 на десктоп) */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {currentItems.map((photo, idx) => {
+              const absoluteIndex = currentSlide * photosPerSlide + idx;
+              return (
+                <button
+                  key={absoluteIndex}
+                  onClick={() => openModal(absoluteIndex)}
+                  className="group relative block overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <LazyImage
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="h-40 md:h-56 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <span className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Индикатори за слайдовете */}
+          <div className="mt-6 flex items-center justify-center gap-2">
+            {Array.from({ length: totalSlides }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                aria-label={`Отиди на слайд ${i + 1}`}
+                className={`h-2.5 w-2.5 rounded-full transition-all ${
+                  i === currentSlide ? 'bg-primary w-6' : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Модал за изображение */}
+      {selectedImage !== null && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4"
+          onClick={closeModal}
+        >
+          <div
+            className="relative max-w-6xl w-full max-h-[85vh] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Бутон за затваряне */}
+            <button
+              aria-label="Затвори"
+              onClick={closeModal}
+              className="absolute -top-10 right-0 md:top-2 md:right-2 z-10 h-10 w-10 rounded-full bg-background/90 hover:bg-background shadow flex items-center justify-center"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            {/* Предишен / Следващ */}
+            <button
+              aria-label="Предишна снимка"
+              onClick={goToPrevious}
+              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-background/90 hover:bg-background shadow flex items-center justify-center"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+
+            <button
+              aria-label="Следваща снимка"
+              onClick={goToNext}
+              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-background/90 hover:bg-background shadow flex items-center justify-center"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+
+            {/* Снимка */}
+            <div className="w-full">
+              <LazyImage
+                src={photos[selectedImage].src}
+                alt={photos[selectedImage].alt}
+                className="mx-auto max-h-[85vh] w-auto object-contain rounded-md"
+                priority
+              />
+            </div>
+
+            {/* Брояч */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs md:text-sm text-white/90">
+              {selectedImage + 1} / {photos.length}
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
 };
 
 export default PhotoGallery;
