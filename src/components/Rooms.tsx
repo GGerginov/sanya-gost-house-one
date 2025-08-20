@@ -77,9 +77,9 @@ const Rooms = () => {
   return (
     <section id="rooms" className="py-20 bg-gradient-hero">
       <div className="container mx-auto px-4">
-        <div className="grid gap-9 xs:grid-cols-1 md:grid-cols-2">
-          <div className="col-6">
-            <div className="text-center mb-16">
+        <div className="grid gap-8 grid-cols-1 lg:grid-cols-2">
+          <div className="flex flex-col">
+            <div className="text-center mb-8">
               <h2 className="text-4xl font-bold text-foreground mb-4">
                 Нашите апартаменти
               </h2>
@@ -90,7 +90,7 @@ const Rooms = () => {
 
             <Card
                 key={rooms[0].id}
-                className="overflow-hidden shadow-warm hover:shadow-glow transition-all duration-300 cursor-pointer"
+                className="overflow-hidden shadow-warm hover:shadow-glow transition-all duration-300 cursor-pointer flex-1"
                 onClick={() => openRoomModal(0)}
             >
               <div className="aspect-video overflow-hidden">
@@ -119,8 +119,8 @@ const Rooms = () => {
             </Card>
           </div>
 
-          <div className="col-6">
-            <div className="text-center mb-16">
+          <div className="flex flex-col">
+            <div className="text-center mb-8">
               <h2 className="text-4xl font-bold text-foreground mb-4">
                 Нашето барбекю
               </h2>
@@ -131,7 +131,7 @@ const Rooms = () => {
 
             <Card
                 key={rooms[1].id}
-                className="overflow-hidden shadow-warm hover:shadow-glow transition-all duration-300 cursor-pointer"
+                className="overflow-hidden shadow-warm hover:shadow-glow transition-all duration-300 cursor-pointer flex-1"
                 onClick={() => openRoomModal(1)}
             >
               <div className="aspect-video overflow-hidden">
