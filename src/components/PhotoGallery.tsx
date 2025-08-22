@@ -31,7 +31,7 @@ const PhotoGallery = () => {
   const photosPerSlide = 4;
   const totalSlides = Math.ceil(photos.length / photosPerSlide);
 
-  // Наблюдавай дали секцията е в изглед (поне 50%)
+
   useEffect(() => {
     const node = galleryRef.current;
     if (!node) return;

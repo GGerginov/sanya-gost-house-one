@@ -6,7 +6,7 @@ const Amenities = () => {
     {
       icon: <Utensils className="w-8 h-8" />,
       title: "Барбекю",
-      description: "Просторна зала с удобни маси - капацитет 24-30 души, камина, озвучаване"
+      description: "Обширна зала с удобни маси - капацитет 24-30 души, камина, озвучаване"
     },
     {
       icon: <Coffee className="w-8 h-8" />,

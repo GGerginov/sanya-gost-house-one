@@ -5,7 +5,7 @@ import heroImage1 from '../../public/assets/hero/DSC_3424.jpg';
 import heroImage2 from '../../public/assets/hero/DSC_3449.jpg'
 import heroImage3 from '../../public/assets/hero/DSC_3440.jpg';
 import heroImage4 from '../../public/assets/hero/DSC_3478.jpg';
-import heroImage5 from '../../public/assets/hero/DSC_3489.jpg';
+import heroImage5 from '../../public/assets/gallery/DSC_3561.jpg';
 import {useEffect, useState} from "react";
 
 const Hero = () => {

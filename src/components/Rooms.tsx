@@ -23,7 +23,7 @@ const Rooms = () => {
         "/assets/room/DSC_3506.jpg",
         "/assets/room/DSC_3525.jpg"
       ],
-      features: ["Удобно двойно легло в спалнята", "Разтегателни диван и фотьойл, масичка – в дневната", "Функционален санитарен възел", "WiFi","Хладилник",
+      features: ["Удобно двойно легло в спалнята", "Разтегателни диван и фотьойл, масичка – в дневната", "Функционални баня и тоалетна", "TV/WiFi","Хладилник",
         "Ютия, дъска за гладене, сушилка за дрехи, кана за топла вода, чаши",
         "Кърпи и халати, сешоар за коса, шампоанчета и сапунчета"]
     },
@@ -44,7 +44,7 @@ const Rooms = () => {
         "/assets/mehana/DSC_3492.jpg",
         "/assets/mehana/DSC_3493.jpg"
       ],
-      features: ["Просторна зала с удобни маси - капацитет 24-30 души", "Камина", "Напълно оборудвана кухня",
+      features: ["Голяма зала с удобни маси - капацитет 24-30 души", "Камина", "Напълно оборудвана кухня",
         "Озвучителна система – колона и микрофони, възможност за свързване към различни устройства",
       "Навес с чешма, работна площ и две барбекюта за приготвяне на храна"]
     }
@@ -138,10 +138,10 @@ const Rooms = () => {
           <div className="flex flex-col">
             <div className="text-center mb-8">
               <h2 className="text-4xl font-bold text-foreground mb-4">
-                Нашето барбекю
+                Барбекю
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Тук ще откриете уютна обстановка с камина и много място за весели събирания. Подходяща е както за семейни вечери, така и за празненства с приятели.
+                Тук ще откриете приятна обстановка с камина и много място за весели събирания. Подходяща е както за семейни вечери, така и за празненства с приятели.
               </p>
             </div>
 
@@ -158,6 +158,7 @@ const Rooms = () => {
                 />
                 <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+
               <CardHeader>
                 <CardTitle className="text-xl text-primary">{rooms[1].name}</CardTitle>
                 <CardDescription className="text-muted-foreground">
@@ -202,6 +203,7 @@ const Rooms = () => {
                   style={{ transform: `translateX(-${modalSlide * 100}%)` }}
                 >
                   {rooms[selectedRoom].images.slice(0, loadedImages).map((image, index) => (
+
                     <div key={index} className="w-full flex-shrink-0">
                       <LazyImage
                         src={image}
@@ -209,6 +211,7 @@ const Rooms = () => {
                         className="w-full h-[50vh] sm:h-[80vh] object-contain bg-muted"
                       />
                     </div>
+
                   ))}
                 </div>
               </div>
