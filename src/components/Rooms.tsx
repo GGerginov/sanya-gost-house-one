@@ -1,8 +1,27 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-// Use public URLs for assets instead of imports
 import LazyImage from "@/components/LazyImage.tsx";
+import room1 from '../../public/assets/room/DSC_3507.jpg';
+import room2 from '../../public/assets/room/DSC_3512.jpg';
+import room3 from '../../public/assets/room/DSC_3516.jpg';
+import room4 from '../../public/assets/room/DSC_3501.jpg';
+import room5 from '../../public/assets/room/DSC_3503.jpg';
+import room6 from '../../public/assets/room/DSC_3506.jpg';
+import room7 from '../../public/assets/room/DSC_3525.jpg';
+import mehana1 from '../../public/assets/mehana/DSC_3489.jpg';
+import mehana2 from '../../public/assets/mehana/DSC_3475.jpg';
+import mehana3 from '../../public/assets/mehana/DSC_3476.jpg';
+import mehana4 from '../../public/assets/mehana/DSC_3477.jpg';
+import mehana5 from '../../public/assets/mehana/DSC_3478.jpg';
+import mehana6 from '../../public/assets/mehana/DSC_3487.jpg';
+import mehana7 from '../../public/assets/mehana/DSC_3488.jpg';
+import mehana8 from '../../public/assets/mehana/DSC_3490.jpg';
+import mehana9 from '../../public/assets/mehana/DSC_3491.jpg';
+import mehana10 from '../../public/assets/mehana/DSC_3492.jpg';
+import mehana11 from '../../public/assets/mehana/DSC_3493.jpg';
+
+
 
 const Rooms = () => {
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
@@ -14,15 +33,7 @@ const Rooms = () => {
       id: 1,
       name: "Комфортен двустаен апартамент с планинска гледка",
       description: "",
-      images: [
-        "/assets/room/DSC_3507.jpg",
-        "/assets/room/DSC_3512.jpg", 
-        "/assets/room/DSC_3516.jpg",
-        "/assets/room/DSC_3501.jpg",
-        "/assets/room/DSC_3503.jpg",
-        "/assets/room/DSC_3506.jpg",
-        "/assets/room/DSC_3525.jpg"
-      ],
+      images: [room1,room2,room3,room4,room5,room6,room7],
       features: ["Удобно двойно легло в спалнята", "Разтегателни диван и фотьойл, масичка – в дневната", "Функционални баня и тоалетна", "TV/WiFi","Хладилник",
         "Ютия, дъска за гладене, сушилка за дрехи, кана за топла вода, чаши",
         "Кърпи и халати, сешоар за коса, шампоанчета и сапунчета"]
@@ -31,19 +42,7 @@ const Rooms = () => {
       id: 2,
       name: "Просторно барбекю",
       description: "",
-      images: [
-        "/assets/mehana/DSC_3489.jpg",
-        "/assets/mehana/DSC_3475.jpg", 
-        "/assets/mehana/DSC_3476.jpg",
-        "/assets/mehana/DSC_3477.jpg",
-        "/assets/mehana/DSC_3478.jpg",
-        "/assets/mehana/DSC_3487.jpg",
-        "/assets/mehana/DSC_3488.jpg",
-        "/assets/mehana/DSC_3490.jpg",
-        "/assets/mehana/DSC_3491.jpg",
-        "/assets/mehana/DSC_3492.jpg",
-        "/assets/mehana/DSC_3493.jpg"
-      ],
+      images: [mehana1,mehana2,mehana3,mehana4,mehana5,mehana6,mehana7,mehana8,mehana9,mehana10,mehana11],
       features: ["Голяма зала с удобни маси - капацитет 24-30 души", "Камина", "Напълно оборудвана кухня",
         "Озвучителна система – колона и микрофони, възможност за свързване към различни устройства",
       "Навес с чешма, работна площ и две барбекюта за приготвяне на храна"]

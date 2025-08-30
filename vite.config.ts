@@ -4,13 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  build: {
-    rollupOptions: {
-      output: {
-        assetFileNames: "assets/[name][extname]", // без хеш
-      }
-    }
-  },
+  base: './',
   server: {
     host: "::",
     port: 8080,

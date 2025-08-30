@@ -1,6 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import LazyImage from '@/components/LazyImage.tsx';
+import image1 from '../../public/assets/gallery/DSC_3425.jpg';
+import image2 from '../../public/assets/gallery/DSC_3427.jpg';
+import image3 from '../../public/assets/gallery/DSC_3434.jpg';
+import image4 from '../../public/assets/gallery/DSC_3435.jpg';
+import image5 from '../../public/assets/gallery/DSC_3437.jpg';
+import image6 from '../../public/assets/gallery/DSC_3445.jpg';
+import image7 from '../../public/assets/gallery/DSC_3447.jpg';
+import image8 from '../../public/assets/gallery/DSC_3450.jpg';
+import image9 from '../../public/assets/gallery/DSC_3455.jpg';
+import image10 from '../../public/assets/gallery/DSC_3456.jpg';
+import image11 from '../../public/assets/gallery/DSC_3459.jpg';
+import image12 from '../../public/assets/gallery/DSC_3462.jpg';
+import image13 from '../../public/assets/gallery/DSC_3465.jpg';
+import image14 from '../../public/assets/gallery/DSC_3497.jpg';
+import image15 from '../../public/assets/gallery/DSC_3559.jpg';
+import image16 from '../../public/assets/gallery/DSC_3561.jpg';
+
 
 const PhotoGallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -10,22 +27,10 @@ const PhotoGallery = () => {
   const galleryRef = useRef<HTMLElement | null>(null);
 
   const photos = [
-    { src: '/assets/gallery/DSC_3425.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3427.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3434.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3435.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3437.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3445.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3447.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3450.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3455.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3456.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3459.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3462.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3465.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3497.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3559.jpg', alt: 'Къща за гости Саня' },
-    { src: '/assets/gallery/DSC_3561.jpg', alt: 'Къща за гости Саня' },
+    image1, image2, image3, image4,
+    image5, image6, image7, image8,
+    image9, image10, image11, image12,
+    image13, image14, image15, image16,
   ];
 
   const photosPerSlide = 4;
@@ -141,8 +146,8 @@ const PhotoGallery = () => {
                   className="group relative block overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <LazyImage
-                    src={photo.src}
-                    alt={photo.alt}
+                    src={photo}
+                    alt="Къща за гости Саня"
                     className="h-40 md:h-56 w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <span className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
@@ -208,8 +213,8 @@ const PhotoGallery = () => {
             {/* Снимка */}
             <div className="w-full">
               <LazyImage
-                src={photos[selectedImage].src}
-                alt={photos[selectedImage].alt}
+                src={photos[selectedImage]}
+                alt="Къща за гости Саня"
                 className="mx-auto max-h-[85vh] w-auto object-contain rounded-md"
                 priority
               />
